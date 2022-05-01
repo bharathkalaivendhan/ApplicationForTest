@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.fontResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.ui.theme.MyApplicationTheme
@@ -53,7 +54,7 @@ fun JewelleryRecycleView()
     }
 
     LazyColumn(
-            contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+           //contentPadding = PaddingValues(horizontal = 0.dp, vertical = 0.dp)
     ){
      itemsIndexed(
          items = jewellery,
@@ -69,16 +70,9 @@ fun JewelleryCard(jewel : JewelleryInfo)
     val hasToGoFullDetailsScreen : () -> Unit = {}
 
     Card(
-        /*
         modifier = Modifier
-            .padding(
-                bottom = 6.dp,
-                top = 6.dp
-            )
-            .fillMaxSize()
-            .clickable(onClick = hasToGoFullDetailsScreen),
-         */
-        modifier = Modifier.padding(horizontal = 8.dp, vertical = 8.dp).fillMaxWidth(),
+            .padding(horizontal = 5.dp, vertical = 5.dp)
+            .fillMaxWidth(),
         elevation = 3.dp,
         backgroundColor = androidx.compose.ui.graphics.Color.Black,
         shape = RoundedCornerShape(corner = CornerSize(16.dp))
@@ -92,9 +86,9 @@ fun JewelleryCard(jewel : JewelleryInfo)
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(8.dp)
-                    .size(90.dp)
+                    .fillMaxWidth(0.50f)
+                    .height(150.dp)
                     .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
-                //contentScale = ContentScale.Fit
             )
 
             Column(
@@ -105,26 +99,13 @@ fun JewelleryCard(jewel : JewelleryInfo)
             ) {
                 Text(
                     text = jewel.JewellryName.toString(),
-                    /*
-                    modifier = Modifier
-                        .fillMaxHeight(0.70f)
-                        .wrapContentHeight(Alignment.Top)
-                        .align(Alignment.CenterHorizontally),
-
-                     */
-                    style = MaterialTheme.typography.h6,
+                    style = MaterialTheme.typography.h5,
                     color = androidx.compose.ui.graphics.Color.Red
 
                 )
                 Text(
                     text = jewel.Price.toString(),
-                    /*
-                    modifier = Modifier
-                        .fillMaxHeight(0.30f)
-                        // .wrapContentHeight(Alignment.Bottom)
-                        .align(Alignment.End),
-                     */
-                    style = MaterialTheme.typography.caption,
+                    style = MaterialTheme.typography.h6,
                     color = androidx.compose.ui.graphics.Color.Red
                 )
             }
