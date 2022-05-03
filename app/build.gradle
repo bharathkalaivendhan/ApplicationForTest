@@ -1,6 +1,11 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+
+    //to parcel a data class
+    id 'kotlin-parcelize'
+
+
 }
 
 android {
